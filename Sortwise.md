@@ -39,3 +39,44 @@ The deliverable must be a working application, not simply a dashboard mockup, ch
 
 ## 1. Scope and acceptance criteria
 
+### Required for the initial release
+
+- Secure authentication and role-based access.
+- Organization and workspace management where multi-tenant operation is required.
+- Complaint creation through manual entry and supported document imports.
+- Structured complaint forms and unstructured-text intake.
+- Normalization into a canonical complaint data model.
+- Evidence-preserving complaint extraction.
+- Configurable complaint categories and statuses.
+- Human-reviewable triage and risk indicators.
+- Duplicate and related-case detection.
+- Complaint search, filtering, and case history.
+- Investigation assignments, tasks, findings, and supporting evidence.
+- Root-cause analysis assistance.
+- CAPA creation and linkage to originating complaints and investigations.
+- Review, approval, verification, and closure workflows.
+- Immutable or tamper-evident audit history for material actions.
+- AI-generated suggestions with supporting evidence and human-review status.
+- Notifications and escalation rules.
+- Dashboard metrics based on reproducible calculations.
+- Searchable reports and data export.
+- Automated tests for critical workflows and permissions.
+- Reproducible local setup, environment configuration, and deployment documentation.
+
+### Required functional behavior
+
+The system must allow a reviewer to:
+
+1. Receive or create a complaint.
+2. Review the original source information.
+3. Inspect extracted fields and correct errors.
+4. Assess the complaint using the applicable risk workflow.
+5. Review possible duplicates or related cases.
+6. Determine the required next step through the authorized workflow.
+7. Assign an investigation when required.
+8. Record findings, evidence, and root-cause hypotheses.
+9. Create corrective or preventive actions when justified.
+10. Verify action effectiveness where required.
+11. Close the case only after applicable review and approval requirements are satisfied.
+12. Reconstruct who did what, when, and why from the audit history.
+
