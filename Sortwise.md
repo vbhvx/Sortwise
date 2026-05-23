@@ -80,3 +80,23 @@ The system must allow a reviewer to:
 11. Close the case only after applicable review and approval requirements are satisfied.
 12. Reconstruct who did what, when, and why from the audit history.
 
+### Explicitly out of scope unless the core system is complete
+
+- Automatically determining that a product is safe.
+- Automatically rejecting complaints solely because an AI model rates them as low risk.
+- Making final reportability decisions without the required human review.
+- Automatically closing a complaint because a language model generated a resolution.
+- Claiming compliance with every regulated industry.
+- Replacing an organization's approved quality-management procedures.
+- Automatically submitting regulatory reports without a separately authorized and validated workflow.
+- Training custom machine-learning models before a reliable baseline workflow exists.
+- Building unnecessary microservices or distributed infrastructure.
+- Generating fictional complaint data that looks like authentic production records.
+- Treating a generated CAPA recommendation as proof that an action was implemented or effective.
+
+The application should initially provide complaint management and quality-workflow capabilities that can be configured for a particular operating context. Additional compliance-specific behavior must be enabled only after the applicable requirements have been identified and implemented.
+
+---
+
+## 2. Product principles and operating boundaries
+
