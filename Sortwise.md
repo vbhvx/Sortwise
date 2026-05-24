@@ -100,3 +100,26 @@ The application should initially provide complaint management and quality-workfl
 
 ## 2. Product principles and operating boundaries
 
+### 2.1 Preserve the original evidence
+
+The submitted complaint is the source record.
+
+Never overwrite the original complaint text merely because it has been normalized, summarized, translated, or classified by AI.
+
+Keep the original content and any extracted or derived representations distinguishable.
+
+### 2.2 Separate facts from interpretations
+
+Every important case attribute should distinguish between:
+
+- Information explicitly provided by the complainant.
+- Information extracted from an imported document.
+- Information entered or corrected by an employee.
+- A deterministic rule result.
+- An AI-generated suggestion.
+- An investigator's finding.
+- An approved quality decision.
+- An unresolved question or hypothesis.
+
+A generated summary must not silently become an approved investigation finding.
+
