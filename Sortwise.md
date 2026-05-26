@@ -123,3 +123,15 @@ Every important case attribute should distinguish between:
 
 A generated summary must not silently become an approved investigation finding.
 
+### 2.3 Human accountability
+
+Safety-critical, reportability-related, high-risk, and closure decisions must follow the configured approval process.
+
+AI may identify possible risks, missing information, relevant cases, or potential causes. Authorized personnel remain responsible for decisions that require human judgment.
+
+### 2.4 Evidence-backed recommendations
+
+The platform must explain why a complaint was flagged, why a duplicate is suspected, or why a particular root cause was suggested.
+
+Where evidence is insufficient, the system must say so.
+
