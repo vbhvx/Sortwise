@@ -135,3 +135,19 @@ The platform must explain why a complaint was flagged, why a duplicate is suspec
 
 Where evidence is insufficient, the system must say so.
 
+### 2.5 Traceability across the lifecycle
+
+A complaint should not become disconnected from its investigation, identified root cause, corrective action, verification evidence, or closure decision.
+
+Maintain explicit relationships between all relevant records.
+
+### 2.6 Configurable workflows, not hardcoded regulations
+
+Complaint types, severity definitions, deadlines, approval requirements, retention rules, and reportability workflows can vary by product, industry, organization, and jurisdiction.
+
+Keep these rules configurable and versioned.
+
+Do not assume that a single universal workflow satisfies every quality-management or regulatory requirement.
+
+---
+
