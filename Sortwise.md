@@ -151,3 +151,9 @@ Do not assume that a single universal workflow satisfies every quality-managemen
 
 ---
 
+## 3. Target users and workflow
+
+### Primary persona: complaint reviewer
+
+Receives inconsistent reports, identifies missing information, assigns categories, checks for duplicates, and determines the next review step.
+
