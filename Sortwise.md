@@ -157,3 +157,15 @@ Do not assume that a single universal workflow satisfies every quality-managemen
 
 Receives inconsistent reports, identifies missing information, assigns categories, checks for duplicates, and determines the next review step.
 
+### Secondary persona: quality or investigation specialist
+
+Investigates complaints, reviews evidence, documents findings, identifies root causes, and tracks corrective actions.
+
+### Quality manager or approver
+
+Reviews escalations, oversees quality decisions, approves required actions, and verifies that closure conditions have been met.
+
+### System administrator
+
+Configures users, roles, complaint categories, severity criteria, workflow rules, and permitted integrations.
+
