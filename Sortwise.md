@@ -216,3 +216,99 @@ Actual workflow transitions must depend on the configured complaint type, risk a
 
 ---
 
+## 4. Technology stack and architecture
+
+Inspect the existing repository before changing the stack. Preserve viable existing infrastructure.
+
+If building from scratch, use a straightforward TypeScript-based architecture.
+
+| Component | Recommended choice | Purpose |
+|---|---|---|
+| Frontend | Next.js, React, TypeScript | Responsive application |
+| Styling | Tailwind CSS or existing design system | Consistent UI |
+| Backend | Next.js server modules or a separate typed API service | Business logic and workflows |
+| Validation | Zod or equivalent | Runtime validation |
+| Database | PostgreSQL | Persistent complaint and quality records |
+| ORM | Prisma or equivalent | Schema and migrations |
+| File storage | Private object storage | Complaint documents and evidence |
+| Background jobs | Durable worker where required | Imports, extraction, notifications |
+| AI integration | Replaceable LLM adapter | Extraction assistance and analysis |
+| Search | PostgreSQL full-text search initially | Complaint and evidence search |
+| Similarity search | Optional embedding/vector service | Duplicate-candidate discovery |
+| Testing | Unit and integration tests | Workflow and data correctness |
+| Browser testing | Playwright | End-to-end validation |
+| Deployment | Compatible managed application and database hosting | Reproducible operations |
+| CI | Lint, type, test, and build checks | Engineering verification |
+
+Use a modular monolith for the initial implementation.
+
+Separate the following logical domains:
+
+- Complaint intake.
+- Document and evidence management.
+- Extraction and normalization.
+- Triage and risk assessment.
+- Duplicate detection.
+- Investigations.
+- Root-cause analysis.
+- CAPA.
+- Workflow and approvals.
+- Audit and reporting.
+- AI services.
+- Integration adapters.
+- Identity and authorization.
+
+Do not introduce separate services unless the existing architecture or measured workload justifies them.
+
+---
+
+## 5. High-level system architecture
+
+```text
+Complaint Sources
+    ├── Manual Forms
+    ├── Emails / Text Imports
+    ├── Supported Documents
+    └── Configured External Integrations
+                  |
+                  v
+          Intake and Validation
+                  |
+                  v
+       Original Record Preservation
+                  |
+                  v
+      Extraction and Normalization
+                  |
+                  v
+          Canonical Complaint
+                  |
+       +----------+-----------+
+       |          |           |
+       v          v           v
+     Triage    Duplicate    Evidence
+    Assistance Detection   Management
+       |          |           |
+       +----------+-----------+
+                  |
+                  v
+       Human-Reviewed Workflow
+                  |
+        +---------+---------+
+        |                   |
+        v                   v
+  Investigation       Escalation /
+        |               Approval
+        v
+  Root-Cause Analysis
+        |
+        v
+  Corrective / Preventive Actions
+        |
+        v
+  Verification and Closure
+        |
+        v
+  Reports + Audit Trail
+```
+
