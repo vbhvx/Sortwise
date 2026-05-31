@@ -169,3 +169,50 @@ Reviews escalations, oversees quality decisions, approves required actions, and 
 
 Configures users, roles, complaint categories, severity criteria, workflow rules, and permitted integrations.
 
+### Auditor or read-only reviewer
+
+Inspects complaint records, approvals, evidence, audit history, and relevant reports without modifying records.
+
+### Core workflow
+
+```text
+Complaint Submitted
+        |
+        v
+Original Record Preserved
+        |
+        v
+Extraction and Validation
+        |
+        v
+Human Review of Extracted Fields
+        |
+        v
+Triage and Risk Assessment
+        |
+        v
+Duplicate / Related-Case Review
+        |
+        v
+Investigation Decision
+        |
+        v
+Investigation and Evidence
+        |
+        v
+Root-Cause Analysis
+        |
+        v
+Corrective / Preventive Actions
+        |
+        v
+Action Verification
+        |
+        v
+Authorized Closure
+```
+
+Actual workflow transitions must depend on the configured complaint type, risk assessment, and approval requirements. Not every complaint requires the same investigation or CAPA path.
+
+---
+
