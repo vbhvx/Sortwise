@@ -312,3 +312,19 @@ Complaint Sources
   Reports + Audit Trail
 ```
 
+### Architecture rules
+
+- The original complaint record must remain available after processing.
+- Derived fields must retain source and extraction provenance.
+- The complaint and quality workflow must not depend on an AI provider being available.
+- Every material status transition must be validated server-side.
+- User permissions must be checked at every operation.
+- AI suggestions must remain distinguishable from human decisions.
+- Audit history must not be editable through ordinary application workflows.
+- Failed integrations or AI calls must not silently change the complaint's meaning or status.
+- High-risk and overdue cases must not become invisible because of background-job failures.
+
+---
+
+## 6. Complaint intake and data normalization
+
