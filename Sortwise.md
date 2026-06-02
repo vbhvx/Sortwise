@@ -328,3 +328,49 @@ Complaint Sources
 
 ## 6. Complaint intake and data normalization
 
+### 6.1 Supported intake methods
+
+Support:
+
+- Manual complaint entry.
+- Structured complaint forms.
+- CSV import where appropriate.
+- Supported document uploads.
+- Email or ticket imports only when explicitly implemented and configured.
+- Authorized external integrations where verified.
+
+Do not claim support for every PDF, email system, ticketing application, or document type.
+
+### 6.2 Canonical complaint model
+
+Normalize each complaint into a common data structure while preserving the original source.
+
+A complaint should support fields such as:
+
+| Field | Purpose |
+|---|---|
+| Complaint ID | Stable internal identifier |
+| Organization ID | Tenant or workspace ownership |
+| External reference | Source-system identifier where available |
+| Source type | Manual, import, email, integration, or other configured source |
+| Received timestamp | When the organization received the complaint |
+| Occurrence timestamp | When the reported event occurred, if known |
+| Complainant reference | Authorized reference to the complainant |
+| Product or service | Reported product, service, or affected process |
+| Batch, lot, or serial reference | Relevant traceability identifier, where applicable |
+| Original description | Preserved complaint text |
+| Normalized description | Optional structured representation |
+| Complaint category | Assigned or proposed classification |
+| Reported impact | Information supplied about consequences |
+| Risk assessment | Versioned assessment result |
+| Duplicate candidates | References to potentially related records |
+| Status | Current workflow state |
+| Owner | Assigned reviewer or investigator |
+| Investigation reference | Related investigation |
+| CAPA references | Related corrective actions |
+| Source references | Documents, emails, and other evidence |
+| Created and updated timestamps | Record lifecycle |
+| Review status | Whether required human review is complete |
+
+Industry-specific fields must be added through validated extensions rather than forcing every organization into one incompatible schema.
+
