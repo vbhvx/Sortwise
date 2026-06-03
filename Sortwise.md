@@ -374,3 +374,37 @@ A complaint should support fields such as:
 
 Industry-specific fields must be added through validated extensions rather than forcing every organization into one incompatible schema.
 
+### 6.3 Preserve raw source material
+
+For every imported complaint, retain a reference to the original document or record when retention and access policies permit.
+
+Record:
+
+- Source system.
+- Original external identifier.
+- Received time.
+- Import or processing batch.
+- File hash where appropriate.
+- Extraction version.
+- Validation outcomes.
+- Original-to-normalized field mapping.
+
+Do not use a generated summary as a substitute for the original complaint.
+
+### 6.4 Extraction and validation
+
+The extraction pipeline must:
+
+1. Read a supported input.
+2. Identify available fields.
+3. Extract candidate values.
+4. Validate field types and formatting.
+5. Preserve citations to the source location where possible.
+6. Identify missing or conflicting information.
+7. Request human correction where needed.
+8. Save the normalized record after the required validation step.
+
+For documents, retain page references or text-span references when practical so reviewers can check extracted values against their source.
+
+If OCR or document parsing fails, mark extraction as incomplete rather than inventing missing values.
+
