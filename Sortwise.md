@@ -408,3 +408,24 @@ For documents, retain page references or text-span references when practical so 
 
 If OCR or document parsing fails, mark extraction as incomplete rather than inventing missing values.
 
+### 6.5 Data-quality statuses
+
+Support clear states such as:
+
+- Received.
+- Awaiting extraction.
+- Extraction complete.
+- Review required.
+- Incomplete.
+- Validation failed.
+- Ready for triage.
+- Processing failed.
+
+Do not make a complaint appear complete simply because an ingestion job ended.
+
+---
+
+## 7. Risk-based triage
+
+Implement a configurable triage engine that helps users identify which cases require prompt review.
+
