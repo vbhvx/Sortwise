@@ -429,3 +429,51 @@ Do not make a complaint appear complete simply because an ingestion job ended.
 
 Implement a configurable triage engine that helps users identify which cases require prompt review.
 
+### 7.1 Triage objectives
+
+Assist reviewers in determining:
+
+- What type of complaint has been received.
+- Whether the reported issue may affect safety or product quality.
+- Whether the complaint needs urgent review.
+- Whether additional information is required.
+- Whether an investigation may be warranted.
+- Whether a configured escalation process should be triggered.
+- Whether a deadline or service-level objective applies.
+
+The triage system must not silently make final safety or regulatory decisions.
+
+### 7.2 Risk factors
+
+Support configurable factors appropriate to the organization and industry, such as:
+
+- Reported injury or harm.
+- Potential product malfunction.
+- Product contamination or quality defect.
+- Severity of the reported outcome.
+- Potential scope or number of affected units.
+- Recurrence of similar complaints.
+- Evidence of an unresolved product issue.
+- Product or batch traceability.
+- Missing or contradictory information.
+- Relevant source-system classifications.
+
+The exact factors, scoring rules, weights, and escalation thresholds must be approved by the organization. Do not invent a supposedly universal risk-scoring formula.
+
+### 7.3 Risk assessment output
+
+Store:
+
+- Assessment version.
+- Applied rules.
+- Evidence used.
+- Missing information.
+- Suggested priority or review category.
+- Rationale.
+- Confidence or uncertainty information where justified.
+- Responsible reviewer.
+- Human decision and timestamp.
+- Any override and its documented reason.
+
+If an AI model contributes to triage, keep its proposed classification separate from the final approved assessment.
+
