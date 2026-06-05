@@ -477,3 +477,23 @@ Store:
 
 If an AI model contributes to triage, keep its proposed classification separate from the final approved assessment.
 
+### 7.4 Human review and escalation
+
+High-risk indicators, possible serious harm, and other configured escalation conditions must trigger the approved review process.
+
+The system must not automatically downgrade a case because an AI model cannot detect risk in the text.
+
+Missing information must not automatically mean low risk.
+
+A reviewer must be able to override an AI suggestion, and the system must record the decision and its rationale.
+
+### 7.5 Deadlines and overdue cases
+
+Support configurable review deadlines and escalation rules.
+
+Calculate deadlines using the applicable rule configuration and recorded timestamps.
+
+Display overdue cases clearly. Failed notifications must not erase or reset overdue status.
+
+---
+
