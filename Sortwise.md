@@ -497,3 +497,23 @@ Display overdue cases clearly. Failed notifications must not erase or reset over
 
 ---
 
+## 8. Duplicate detection and related-case analysis
+
+Implement duplicate detection as a reviewable matching workflow, not an automatic deletion mechanism.
+
+### 8.1 Matching signals
+
+Use available evidence such as:
+
+- Product or service identifier.
+- Batch, lot, or serial number.
+- Normalized problem description.
+- Error or defect category.
+- Occurrence date.
+- Reported symptoms.
+- External reference.
+- Shared documented attributes.
+- Text similarity where appropriate.
+
+Use exact identifiers and deterministic matches first. Use semantic similarity or embeddings only as additional signals.
+
