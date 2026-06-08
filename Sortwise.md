@@ -517,3 +517,30 @@ Use available evidence such as:
 
 Use exact identifiers and deterministic matches first. Use semantic similarity or embeddings only as additional signals.
 
+### 8.2 Duplicate classifications
+
+Distinguish:
+
+- Confirmed duplicate.
+- Possible duplicate.
+- Related complaint.
+- Similar problem, distinct case.
+- Unrelated complaint.
+- Insufficient information.
+
+A related complaint is not necessarily a duplicate. Different customers may independently report the same genuine issue.
+
+### 8.3 Duplicate-review interface
+
+Show:
+
+- Matching complaint references.
+- Similarity or matching criteria.
+- Shared and conflicting fields.
+- Source descriptions.
+- Relevant product or batch metadata.
+- Current status of related cases.
+- A rationale for the suggested relationship.
+
+Allow authorized reviewers to confirm, reject, or defer the suggestion.
+
