@@ -544,3 +544,21 @@ Show:
 
 Allow authorized reviewers to confirm, reject, or defer the suggestion.
 
+### 8.4 Duplicate behavior
+
+Never delete a complaint simply because an AI model considers it similar to another record.
+
+If a confirmed duplicate is linked to a primary case, preserve the duplicate record's identifier, source, history, and relationship.
+
+The system must preserve the ability to inspect each original report independently.
+
+### 8.5 Related-case clustering
+
+Support an optional view that groups complaints with common characteristics.
+
+Clusters must show the underlying complaint records and the rules or similarity criteria used to group them.
+
+Do not claim that a cluster proves a common root cause. That conclusion belongs to the subsequent investigation process.
+
+---
+
