@@ -562,3 +562,15 @@ Do not claim that a cluster proves a common root cause. That conclusion belongs 
 
 ---
 
+## 9. Complaint lifecycle and workflow engine
+
+Implement a configurable state machine that governs complaint progression.
+
+### 9.1 Suggested states
+
+Possible states include:
+
+`received`, `processing`, `needs_information`, `triage_review`, `under_assessment`, `investigation_required`, `under_investigation`, `capa_in_progress`, `awaiting_verification`, `awaiting_approval`, `closed`, `reopened`, `cancelled`.
+
+Use only states supported by the actual operating model. Their transitions and meaning must be documented.
+
