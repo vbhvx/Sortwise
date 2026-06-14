@@ -574,3 +574,26 @@ Possible states include:
 
 Use only states supported by the actual operating model. Their transitions and meaning must be documented.
 
+### 9.2 Transition controls
+
+Every state transition must verify:
+
+- Current status.
+- Requested transition.
+- User role and permissions.
+- Required fields.
+- Required review records.
+- Applicable approval rules.
+- Mandatory supporting evidence.
+- Deadline and escalation implications.
+
+A frontend button is not an authorization control.
+
+### 9.3 Assignment and ownership
+
+Support assignment to reviewers, investigators, approvers, or designated teams.
+
+Track assignment changes, responsibilities, due dates, and completion status.
+
+Do not allow an unrelated user to modify a complaint merely because they know its identifier.
+
