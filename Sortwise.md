@@ -597,3 +597,33 @@ Track assignment changes, responsibilities, due dates, and completion status.
 
 Do not allow an unrelated user to modify a complaint merely because they know its identifier.
 
+### 9.4 Reopening
+
+Allow authorized users to reopen a closed complaint when supported by the approved workflow.
+
+Record the reason, actor, timestamp, and subsequent state transitions.
+
+Do not erase the original closure decision.
+
+### 9.5 Closure criteria
+
+Define closure rules per complaint type and operating context.
+
+Possible requirements include:
+
+- Required investigation completed or justified as not required.
+- Required findings documented.
+- Required actions completed.
+- Required verification completed.
+- Required reviews and approvals recorded.
+- Supporting evidence retained.
+- Closure rationale supplied.
+
+Do not force every complaint through CAPA if the applicable procedure does not require it. Conversely, do not skip mandatory actions merely to simplify closure.
+
+---
+
+## 10. Investigation and root-cause analysis
+
+Provide structured investigation tools that allow investigators to record facts, hypotheses, evidence, and conclusions separately.
+
