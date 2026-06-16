@@ -627,3 +627,42 @@ Do not force every complaint through CAPA if the applicable procedure does not r
 
 Provide structured investigation tools that allow investigators to record facts, hypotheses, evidence, and conclusions separately.
 
+### 10.1 Investigation record
+
+Each investigation should support:
+
+- Linked complaint or complaint cluster.
+- Investigation owner.
+- Investigation scope.
+- Issue statement.
+- Investigation plan.
+- Tasks and due dates.
+- Evidence references.
+- Findings.
+- Hypotheses.
+- Root-cause conclusions.
+- Unresolved questions.
+- Required approvals.
+- Investigation outcome.
+- Closure or escalation rationale.
+
+### 10.2 Evidence management
+
+Allow evidence attachments and references to relevant records.
+
+For each evidence item, preserve appropriate metadata such as:
+
+- Evidence ID.
+- Type.
+- Source.
+- Linked complaint or investigation.
+- Upload or observation timestamp.
+- Submitter.
+- File hash where appropriate.
+- Description.
+- Version.
+- Access classification.
+- Retention policy.
+
+Never replace original evidence with an AI summary.
+
