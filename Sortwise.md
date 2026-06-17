@@ -666,3 +666,31 @@ For each evidence item, preserve appropriate metadata such as:
 
 Never replace original evidence with an AI summary.
 
+### 10.3 Root-cause analysis support
+
+Provide optional templates for commonly used approaches, such as:
+
+- Five Whys.
+- Fishbone or cause-and-effect analysis.
+- Failure mode or defect categorization.
+- Evidence-based hypothesis testing.
+
+The platform should not force one method on every case.
+
+### 10.4 AI-assisted investigation
+
+The assistant may:
+
+- Summarize the complaint and available evidence.
+- Extract relevant facts from approved documents.
+- Identify missing information.
+- Suggest investigation questions.
+- Highlight similar historical cases.
+- Propose possible root-cause hypotheses.
+- Help structure findings.
+- Draft an investigation summary.
+
+Every AI-generated hypothesis must be labeled as a hypothesis.
+
+The system must not promote a possible root cause to an approved finding without the required human decision and supporting evidence.
+
