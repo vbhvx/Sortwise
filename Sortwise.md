@@ -694,3 +694,24 @@ Every AI-generated hypothesis must be labeled as a hypothesis.
 
 The system must not promote a possible root cause to an approved finding without the required human decision and supporting evidence.
 
+### 10.5 Investigation closure
+
+Record:
+
+- Findings.
+- Evidence reviewed.
+- Determined root cause, if established.
+- Remaining uncertainty.
+- Whether further investigation is needed.
+- The responsible reviewer.
+- Approval details.
+- Related corrective actions.
+
+If the cause remains unknown, represent that outcome explicitly rather than fabricating a conclusive explanation.
+
+---
+
+## 11. Corrective and Preventive Action (CAPA)
+
+Implement CAPA management as a traceable workflow connected to complaint and investigation records.
+
