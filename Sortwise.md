@@ -715,3 +715,35 @@ If the cause remains unknown, represent that outcome explicitly rather than fabr
 
 Implement CAPA management as a traceable workflow connected to complaint and investigation records.
 
+### 11.1 CAPA record
+
+Support fields such as:
+
+- CAPA ID.
+- Title and description.
+- Triggering complaints.
+- Related investigations.
+- Identified issue and root cause.
+- Corrective action.
+- Preventive action, where applicable.
+- Owner.
+- Due date.
+- Priority.
+- Required approvals.
+- Implementation evidence.
+- Verification plan.
+- Effectiveness criteria.
+- Verification results.
+- Final approval.
+- Status and timestamps.
+
+### 11.2 CAPA lifecycle
+
+A configurable workflow may include:
+
+`proposed → under_review → approved → in_progress → implemented → effectiveness_review → completed`.
+
+Additional states may be needed for rejection, cancellation, overdue work, or reopening.
+
+Validate every transition according to configured permissions and prerequisites.
+
