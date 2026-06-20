@@ -747,3 +747,29 @@ Additional states may be needed for rejection, cancellation, overdue work, or re
 
 Validate every transition according to configured permissions and prerequisites.
 
+### 11.3 Action verification
+
+Distinguish between:
+
+- Action proposed.
+- Action approved.
+- Action implemented.
+- Evidence submitted.
+- Effectiveness verified.
+- Action formally closed.
+
+An action being marked implemented does not automatically establish effectiveness.
+
+Capture the verification evidence, criteria, reviewer, result, and any required follow-up.
+
+### 11.4 Complaint-to-CAPA traceability
+
+Users must be able to navigate both directions:
+
+- From complaint to investigation and CAPA.
+- From CAPA to all linked complaints and investigations.
+
+Support multiple complaints linked to one CAPA where the approved operating model permits this.
+
+Prevent duplicate action records where multiple similar complaints lead to a shared corrective effort.
+
