@@ -785,3 +785,34 @@ If a required action becomes overdue, preserve that condition even if a backgrou
 
 The AI subsystem must improve efficiency without becoming the system of record or the final decision-maker.
 
+### 12.1 Supported AI tasks
+
+Implement AI as a collection of bounded capabilities:
+
+- Complaint field extraction.
+- Plain-language complaint summaries.
+- Suggested categorization.
+- Missing-information detection.
+- Duplicate candidate discovery.
+- Triage-support explanations.
+- Similar-case search summaries.
+- Investigation planning assistance.
+- Root-cause hypothesis generation.
+- Draft CAPA suggestions.
+- Draft communications or reports.
+
+Do not attempt to build every capability before the core complaint lifecycle works reliably.
+
+### 12.2 AI processing pipeline
+
+1. Retrieve the authorized source record.
+2. Identify the task and required data.
+3. Minimize the information sent to the model.
+4. Send a structured, schema-constrained request.
+5. Validate the model response.
+6. Check references against actual source records.
+7. Store the output as a proposal or analysis result.
+8. Present the evidence and uncertainty to the reviewer.
+9. Capture human acceptance, correction, or rejection.
+10. Record the applicable model, prompt, and processing version metadata where appropriate.
+
