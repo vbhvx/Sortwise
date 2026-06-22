@@ -773,3 +773,15 @@ Support multiple complaints linked to one CAPA where the approved operating mode
 
 Prevent duplicate action records where multiple similar complaints lead to a shared corrective effort.
 
+### 11.5 Overdue actions
+
+Track action owners, due dates, overdue states, and escalations.
+
+If a required action becomes overdue, preserve that condition even if a background notification fails.
+
+---
+
+## 12. AI architecture and evidence grounding
+
+The AI subsystem must improve efficiency without becoming the system of record or the final decision-maker.
+
