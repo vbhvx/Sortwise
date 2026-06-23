@@ -816,3 +816,40 @@ Do not attempt to build every capability before the core complaint lifecycle wor
 9. Capture human acceptance, correction, or rejection.
 10. Record the applicable model, prompt, and processing version metadata where appropriate.
 
+### 12.3 Evidence grounding
+
+The AI must only cite documents and complaint records that were actually retrieved.
+
+For each important suggested fact, retain a reference to its source where technically feasible.
+
+If a source is unavailable, contradictory, or insufficient, the model must acknowledge the gap.
+
+Do not fabricate quotations, document references, complaint identifiers, product attributes, root causes, or safety findings.
+
+### 12.4 Structured output
+
+Use typed schemas for AI responses.
+
+For example, a triage suggestion could include:
+
+- Proposed category.
+- Proposed priority.
+- Evidence references.
+- Missing fields.
+- Rationale.
+- Uncertainty indicators.
+- Suggested next review step.
+
+Treat this output as an advisory result, not an approved workflow decision.
+
+### 12.5 AI failure behavior
+
+If the AI service is unavailable or returns invalid output:
+
+- Preserve the original complaint.
+- Continue manual review.
+- Mark the AI task as failed or unavailable.
+- Record a safe diagnostic.
+- Avoid changing approved values.
+- Allow retry within defined resource limits.
+
