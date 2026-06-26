@@ -853,3 +853,30 @@ If the AI service is unavailable or returns invalid output:
 - Avoid changing approved values.
 - Allow retry within defined resource limits.
 
+### 12.6 Prompt-injection defense
+
+Treat complaint text, attached documents, email content, external case records, and other imported material as untrusted data.
+
+Instructions found inside a complaint or attachment must never override the application's authorization or AI policies.
+
+The AI must not receive unrestricted SQL, unrestricted network access, or direct tools for bypassing workflow approvals.
+
+### 12.7 AI quality evaluation
+
+Maintain a versioned evaluation dataset covering:
+
+- Field extraction.
+- Classification.
+- Missing information.
+- Duplicate suggestions.
+- Risk-related language.
+- Contradictory evidence.
+- Unsupported conclusions.
+- Prompt-injection attempts.
+
+Evaluate the system on relevant, approved examples before enabling a model or prompt version in production.
+
+Do not claim that an AI confidence score is calibrated or that a model is clinically, scientifically, or regulatorily validated without supporting validation evidence.
+
+---
+
