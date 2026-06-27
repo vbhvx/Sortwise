@@ -880,3 +880,32 @@ Do not claim that an AI confidence score is calibrated or that a model is clinic
 
 ---
 
+## 13. Regulatory configuration and auditability
+
+This platform must support auditable complaint operations, but it must not claim blanket regulatory compliance.
+
+The applicable requirements depend on the product, industry, operating jurisdiction, and organizational procedures.
+
+### 13.1 Regulatory applicability register
+
+Before enabling a regulated workflow, document:
+
+- Target industry and product scope.
+- Operating jurisdiction.
+- Applicable rules and standards.
+- Official source references.
+- Review date.
+- Required records and retention.
+- Required review or approval steps.
+- Reportability assessment process.
+- Role and responsibility requirements.
+- Validation requirements.
+- Responsible compliance owner.
+- Approval status.
+
+For US medical-device complaint workflows, review the FDA's current [Quality Management System Regulation (QMSR)](https://www.fda.gov/medical-devices/postmarket-requirements-devices/quality-management-system-regulation-qmsr), which became effective on February 2, 2026. Applicability depends on the regulated product and manufacturer context.
+
+For US drug-product complaint records, review the current text of [21 CFR 211.198](https://ecfr.io/Title-21/Section-211.198). Its complaint-file provisions address written procedures, complaint review, investigation-related records, and documentation when an investigation is not considered necessary.
+
+These examples do not establish that the application is compliant with either framework. The implementation team must determine which requirements apply to the intended users and operating model.
+
