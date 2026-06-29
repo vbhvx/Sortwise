@@ -909,3 +909,42 @@ For US drug-product complaint records, review the current text of [21 CFR 211.19
 
 These examples do not establish that the application is compliant with either framework. The implementation team must determine which requirements apply to the intended users and operating model.
 
+### 13.2 Configurable compliance controls
+
+Implement configurable controls for:
+
+- Required fields.
+- Review responsibility.
+- Investigation requirements.
+- Escalation conditions.
+- Approval steps.
+- Document retention.
+- Closure prerequisites.
+- Record corrections.
+- Audit events.
+- Report templates.
+
+Version material rule changes. A historical complaint should retain the rule and workflow context applicable to its recorded decisions.
+
+### 13.3 Audit history
+
+Maintain a durable history of material events, including:
+
+- Complaint creation.
+- Import and extraction.
+- Field corrections.
+- Classification changes.
+- Risk assessments.
+- Duplicate review decisions.
+- Assignment changes.
+- Investigation findings.
+- Root-cause conclusions.
+- CAPA changes.
+- Approvals.
+- Closure and reopening.
+- Exports and relevant administrative actions.
+
+Each audit event should contain an event ID, actor, action, target record, timestamp, relevant previous and new values where appropriate, and a reason for consequential decisions.
+
+Protect audit records from editing through ordinary application workflows. Use appropriate integrity controls for the deployment's requirements.
+
