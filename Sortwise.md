@@ -948,3 +948,17 @@ Each audit event should contain an event ID, actor, action, target record, times
 
 Protect audit records from editing through ordinary application workflows. Use appropriate integrity controls for the deployment's requirements.
 
+### 13.4 Electronic approvals
+
+If approval records are used to satisfy a regulated operating requirement, define and validate the necessary identity, authentication, attribution, meaning, timestamp, record linkage, and integrity controls.
+
+Do not assume a simple button click constitutes a legally sufficient electronic signature.
+
+### 13.5 Compliance claims
+
+Do not label the application “FDA compliant,” “GMP compliant,” or universally compliant merely because it records complaints and audit events.
+
+Compliance depends on the applicable requirements, the complete operating process, validated controls, records, organizational procedures, and actual implementation.
+
+---
+
