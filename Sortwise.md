@@ -962,3 +962,74 @@ Compliance depends on the applicable requirements, the complete operating proces
 
 ---
 
+## 14. Database schema
+
+Use PostgreSQL with versioned migrations, foreign keys, indexes, and appropriate tenant isolation.
+
+The minimum conceptual schema should include the following.
+
+| Table | Purpose |
+|---|---|
+| `organizations` | Organization or workspace ownership |
+| `users` | User identity and status |
+| `organization_memberships` | Organization membership and role |
+| `complaints` | Canonical complaint records |
+| `complaint_sources` | Original source metadata and provenance |
+| `complaint_attachments` | Evidence attachments and storage references |
+| `complaint_extractions` | Versioned extracted fields and confidence metadata |
+| `complaint_classifications` | Proposed and approved classifications |
+| `risk_assessments` | Versioned rule- and human-reviewed risk results |
+| `complaint_relationships` | Duplicate and related-case links |
+| `investigations` | Investigation scope, owner, status, and findings |
+| `investigation_tasks` | Assigned tasks and due dates |
+| `investigation_evidence` | Evidence associated with investigations |
+| `root_cause_hypotheses` | Proposed causes and verified findings |
+| `capas` | Corrective and preventive actions |
+| `capa_complaint_links` | Complaint-to-CAPA relationships |
+| `capa_evidence` | Implementation and verification evidence |
+| `workflow_definitions` | Configurable states and transitions |
+| `workflow_versions` | Versioned workflow configurations |
+| `approvals` | Review and approval records |
+| `audit_events` | Durable record of material actions |
+| `ai_analysis_runs` | AI task metadata and outcomes |
+| `notifications` | Escalations and user notifications |
+| `integration_runs` | External intake or synchronization history |
+
+### Core table behavior
+
+**`complaints`**
+
+Include a stable ID, organization ID, source reference, receipt and occurrence timestamps, complainant reference where permitted, product identifiers, original description, normalized fields, current status, owner, and timestamps.
+
+**`complaint_sources`**
+
+Preserve the source system, external identifier, original record reference, ingestion time, source content hash, and permitted raw-source reference.
+
+**`complaint_extractions`**
+
+Store extracted values, evidence references, schema version, extraction method, processing status, and review state.
+
+**`risk_assessments`**
+
+Store the rule version, factors considered, source evidence, suggested outcome, uncertainty, reviewer, final decision, and rationale.
+
+**`complaint_relationships`**
+
+Store the relationship type, linked records, matching method, evidence, reviewer decision, and timestamps.
+
+**`investigations`**
+
+Store the investigation scope, assigned owner, status, findings, supporting evidence, relevant root-cause records, and review outcome.
+
+**`capas`**
+
+Store action descriptions, responsible owners, dates, status, required approvals, implementation evidence, verification criteria, effectiveness results, and closure information.
+
+**`approvals`**
+
+Store the approved record, action, actor, timestamp, applicable version, decision, and reason where required.
+
+**`audit_events`**
+
+Store material events in a durable form. Prevent ordinary application permissions from editing or deleting the audit history.
+
