@@ -1033,3 +1033,23 @@ Store the approved record, action, actor, timestamp, applicable version, decisio
 
 Store material events in a durable form. Prevent ordinary application permissions from editing or deleting the audit history.
 
+### Database requirements
+
+- Enforce organization ownership and user permissions.
+- Use transactions for multi-record state changes.
+- Preserve complaint-source evidence.
+- Record relationships without cascading away important historical evidence.
+- Use unique constraints for stable external identifiers where appropriate.
+- Index complaint status, received date, product identifiers, category, priority, owner, and organization.
+- Define file-retention and deletion rules.
+- Keep secrets out of ordinary data records.
+- Support versioned schema and workflow migrations.
+- Ensure tenant isolation is enforced server-side and, where appropriate, through database policies.
+- Never store model-generated data as verified facts without the required review.
+
+---
+
+## 15. Backend API contract
+
+Implement versioned, validated APIs. Enforce authorization and workflow rules on the server.
+
