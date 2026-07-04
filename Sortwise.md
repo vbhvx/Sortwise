@@ -1053,3 +1053,31 @@ Store material events in a durable form. Prevent ordinary application permission
 
 Implement versioned, validated APIs. Enforce authorization and workflow rules on the server.
 
+### Complaints
+
+- `GET /api/v1/complaints`
+- `POST /api/v1/complaints`
+- `GET /api/v1/complaints/{complaintId}`
+- `PATCH /api/v1/complaints/{complaintId}`
+- `POST /api/v1/complaints/{complaintId}/submit`
+- `POST /api/v1/complaints/{complaintId}/assign`
+- `POST /api/v1/complaints/{complaintId}/transition`
+
+### Intake and extraction
+
+- `POST /api/v1/intake`
+- `POST /api/v1/complaints/{complaintId}/extract`
+- `GET /api/v1/complaints/{complaintId}/extraction`
+- `POST /api/v1/complaints/{complaintId}/confirm-extraction`
+- `GET /api/v1/imports/{batchId}`
+
+Implement only the source formats and ingestion methods that actually exist. Validate source records before committing normalized data.
+
+### Triage and risk assessment
+
+- `POST /api/v1/complaints/{complaintId}/triage`
+- `GET /api/v1/complaints/{complaintId}/risk-assessments`
+- `POST /api/v1/complaints/{complaintId}/risk-assessments/{assessmentId}/review`
+
+AI recommendations must not directly bypass the approved workflow.
+
