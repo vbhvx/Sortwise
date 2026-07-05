@@ -1081,3 +1081,20 @@ Implement only the source formats and ingestion methods that actually exist. Val
 
 AI recommendations must not directly bypass the approved workflow.
 
+### Duplicate and related cases
+
+- `GET /api/v1/complaints/{complaintId}/related`
+- `POST /api/v1/complaints/{complaintId}/relationships`
+- `POST /api/v1/relationships/{relationshipId}/review`
+
+A duplicate relationship must retain evidence and review history.
+
+### Investigations
+
+- `GET /api/v1/complaints/{complaintId}/investigation`
+- `POST /api/v1/complaints/{complaintId}/investigations`
+- `PATCH /api/v1/investigations/{investigationId}`
+- `POST /api/v1/investigations/{investigationId}/evidence`
+- `POST /api/v1/investigations/{investigationId}/findings`
+- `POST /api/v1/investigations/{investigationId}/close`
+
