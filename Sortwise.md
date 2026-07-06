@@ -1098,3 +1098,22 @@ A duplicate relationship must retain evidence and review history.
 - `POST /api/v1/investigations/{investigationId}/findings`
 - `POST /api/v1/investigations/{investigationId}/close`
 
+### CAPA
+
+- `GET /api/v1/capas`
+- `POST /api/v1/capas`
+- `GET /api/v1/capas/{capaId}`
+- `PATCH /api/v1/capas/{capaId}`
+- `POST /api/v1/capas/{capaId}/actions`
+- `POST /api/v1/capas/{capaId}/verification`
+- `POST /api/v1/capas/{capaId}/approve`
+- `POST /api/v1/capas/{capaId}/close`
+
+### Audit and reporting
+
+- `GET /api/v1/complaints/{complaintId}/history`
+- `GET /api/v1/audit-events`
+- `GET /api/v1/reports/complaints`
+- `GET /api/v1/reports/capa`
+- `POST /api/v1/exports`
+
