@@ -1137,3 +1137,30 @@ A duplicate relationship must retain evidence and review history.
 
 Build a polished, responsive quality-management workspace that helps reviewers process cases efficiently without obscuring important evidence.
 
+### A. Complaint overview dashboard
+
+Display:
+
+- Total complaints by status.
+- Complaints awaiting triage.
+- High-priority items requiring review.
+- Overdue investigations.
+- Open CAPAs.
+- Actions approaching their due dates.
+- Complaints with incomplete information.
+- Trends and categories based on defined metrics.
+
+Every dashboard metric must come from reproducible queries and be scoped to the user's authorized organization.
+
+Do not show fabricated production counts.
+
+### B. Complaint intake
+
+Provide a structured form supporting the configured fields.
+
+Allow text entry and supported attachments.
+
+Use clear validation messages and preserve the original description.
+
+Make uncertain fields reviewable rather than forcing users to provide unsupported data.
+
