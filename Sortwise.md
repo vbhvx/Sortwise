@@ -1117,3 +1117,23 @@ A duplicate relationship must retain evidence and review history.
 - `GET /api/v1/reports/capa`
 - `POST /api/v1/exports`
 
+### API requirements
+
+- Authenticate and authorize every private operation.
+- Validate IDs, fields, documents, and workflow transitions.
+- Use structured error responses.
+- Apply rate limits and upload-size restrictions.
+- Prevent cross-organization data access.
+- Use idempotency controls for retryable operations.
+- Do not report success before the database operation has succeeded.
+- Do not expose stack traces or secrets.
+- Ensure that each consequential action is associated with an authenticated actor.
+- Return current workflow status and appropriate review information.
+- Keep AI output and final human decisions separate in the API contract.
+
+---
+
+## 16. Frontend and user experience specification
+
+Build a polished, responsive quality-management workspace that helps reviewers process cases efficiently without obscuring important evidence.
+
