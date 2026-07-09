@@ -1164,3 +1164,41 @@ Use clear validation messages and preserve the original description.
 
 Make uncertain fields reviewable rather than forcing users to provide unsupported data.
 
+### C. Complaint list
+
+Provide search, filters, and sorting by:
+
+- Status.
+- Priority.
+- Category.
+- Date received.
+- Product or batch.
+- Assigned reviewer.
+- Investigation status.
+- CAPA status.
+- Data completeness.
+
+Use pagination for large datasets.
+
+Make overdue and high-priority cases visible without relying exclusively on color.
+
+### D. Complaint detail workspace
+
+Show:
+
+- Original complaint description.
+- Structured complaint fields.
+- Source documents.
+- Extracted values and corrections.
+- Category and risk review.
+- Related complaint candidates.
+- Current workflow state.
+- Assigned owner.
+- Investigation details.
+- Root-cause findings.
+- Linked CAPAs.
+- Approval history.
+- Audit timeline.
+
+The original source should remain accessible alongside AI summaries and normalized fields.
+
