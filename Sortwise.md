@@ -1202,3 +1202,28 @@ Show:
 
 The original source should remain accessible alongside AI summaries and normalized fields.
 
+### E. AI triage panel
+
+Display AI-suggested fields, potential risk indicators, missing information, and related cases.
+
+For every meaningful suggestion, show its evidence and review status.
+
+Provide clear actions to accept, edit, reject, or defer a suggestion where permitted.
+
+Never present an AI proposal as an approved decision by default.
+
+### F. Investigation workspace
+
+Include:
+
+- Investigation plan.
+- Assigned tasks and owners.
+- Evidence list.
+- Findings.
+- Root-cause hypotheses.
+- Reviewed conclusions.
+- Outstanding questions.
+- Approval or closure controls.
+
+Keep facts, hypotheses, and approved findings visually distinct.
+
