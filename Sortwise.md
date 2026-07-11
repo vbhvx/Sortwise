@@ -1227,3 +1227,42 @@ Include:
 
 Keep facts, hypotheses, and approved findings visually distinct.
 
+### G. CAPA workspace
+
+Show:
+
+- Linked complaints.
+- Related investigations.
+- Action descriptions.
+- Responsible owners.
+- Due dates.
+- Approval status.
+- Implementation evidence.
+- Effectiveness criteria.
+- Verification results.
+- Current lifecycle state.
+
+Make overdue actions discoverable.
+
+### H. Audit timeline
+
+Display material events in chronological order with actor, action, timestamp, and relevant change context.
+
+Users must be able to see why a record changed status, who approved an action, and which evidence informed the decision.
+
+### I. Administration and configuration
+
+Provide restricted configuration for:
+
+- Users and roles.
+- Complaint categories.
+- Risk rules.
+- Escalation thresholds.
+- Workflow states.
+- Approval rules.
+- Retention policy metadata.
+- Integration statuses.
+- AI feature availability.
+
+Do not let unauthorized users change risk thresholds or workflow rules.
+
