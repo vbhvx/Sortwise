@@ -1285,3 +1285,29 @@ Do not let unauthorized users change risk thresholds or workflow rules.
 
 Complaint records may contain personal data, product information, confidential business details, and safety-related information.
 
+### Authentication and authorization
+
+Implement maintained authentication with server-side permission checks.
+
+Use roles such as:
+
+- Administrator.
+- Complaint Reviewer.
+- Investigator.
+- Quality Approver.
+- Read-only Auditor.
+
+These are initial role concepts, not a universal mandatory permission scheme. Final permissions must be aligned with the organization's operating model.
+
+Use least privilege. A reviewer should not automatically have permission to modify workflow configuration or approve their own consequential decisions if segregation of duties is required.
+
+### Tenant isolation
+
+If multiple organizations are supported:
+
+- Scope complaints, attachments, investigations, CAPAs, and audit events by organization.
+- Enforce ownership in the backend.
+- Use database policies where appropriate.
+- Test cross-tenant access.
+- Ensure search, AI retrieval, exports, and notifications cannot leak records across organizations.
+
