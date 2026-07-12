@@ -1266,3 +1266,22 @@ Provide restricted configuration for:
 
 Do not let unauthorized users change risk thresholds or workflow rules.
 
+### General UX requirements
+
+- Responsive layouts for desktop and mobile.
+- Accessible keyboard navigation.
+- Clear headings and status labels.
+- Loading, empty, error, and partial-data states.
+- Evidence links adjacent to the relevant claims.
+- Clear separation between proposed and approved values.
+- Confirmation for consequential actions.
+- No nonfunctional workflow buttons.
+- No misleading indicators of regulatory compliance.
+- No hidden failure states for intake, extraction, investigation, or CAPA processing.
+
+---
+
+## 17. Security, privacy, and data retention
+
+Complaint records may contain personal data, product information, confidential business details, and safety-related information.
+
