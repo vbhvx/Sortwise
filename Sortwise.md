@@ -1311,3 +1311,22 @@ If multiple organizations are supported:
 - Test cross-tenant access.
 - Ensure search, AI retrieval, exports, and notifications cannot leak records across organizations.
 
+### Attachment security
+
+- Validate uploaded content.
+- Enforce file-size and type restrictions.
+- Use private storage by default.
+- Use short-lived authorized download links where appropriate.
+- Scan files where the deployment requires it.
+- Avoid public links to complaint documents.
+- Apply retention and deletion policies.
+- Prevent unsafe HTML or executable document content from being rendered as trusted application UI.
+
+### Audit security
+
+Protect audit history from ordinary edits and deletions.
+
+Capture relevant actions and avoid placing unnecessary sensitive content into audit metadata.
+
+Use integrity controls suitable for the risk and operating model.
+
