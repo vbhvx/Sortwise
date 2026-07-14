@@ -1330,3 +1330,23 @@ Capture relevant actions and avoid placing unnecessary sensitive content into au
 
 Use integrity controls suitable for the risk and operating model.
 
+### AI privacy
+
+- Send only the information required for each AI task.
+- Avoid sending unrelated customer information.
+- Use authorized retrieval scoped to the current organization and user permissions.
+- Document provider data handling and retention.
+- Avoid indefinite retention of prompts and raw complaint content.
+- Keep credentials and secrets out of prompts.
+- Treat imported content as untrusted input.
+
+### Retention and deletion
+
+Define retention requirements by complaint class, applicable jurisdiction, and organizational policy.
+
+Do not apply one universal deletion period to every complaint.
+
+When retention obligations restrict deletion, document the applicable policy and behavior. The application must not claim that a record has been permanently deleted when retained copies still exist.
+
+---
+
