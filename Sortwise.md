@@ -1350,3 +1350,22 @@ When retention obligations restrict deletion, document the applicable policy and
 
 ---
 
+## 18. Testing and validation plan
+
+Build deterministic tests that can run without a paid AI provider or production complaint database.
+
+### Complaint intake tests
+
+Test:
+
+- Valid manual complaint.
+- Missing required fields.
+- Invalid dates.
+- Unsupported attachments.
+- Malformed imports.
+- Duplicate source identifiers.
+- Extraction failure.
+- Conflicting extracted and manually entered values.
+- Safe retry of intake operations.
+- Preservation of original complaint evidence.
+
