@@ -1369,3 +1369,32 @@ Test:
 - Safe retry of intake operations.
 - Preservation of original complaint evidence.
 
+### Risk and triage tests
+
+Test:
+
+- Deterministic risk rules.
+- Missing safety-related information.
+- High-risk indicators.
+- Conflicting source fields.
+- Human overrides.
+- Required escalation.
+- Versioned rule changes.
+- Prevention of unauthorized risk-threshold modification.
+- Prevention of automatic closure by an AI suggestion.
+
+Do not treat a sample rule's expected output as proof of clinical or regulatory validity.
+
+### Duplicate detection tests
+
+Test:
+
+- Exact external identifiers.
+- Similar descriptions with different products.
+- Similar product and batch references.
+- Related complaints with different outcomes.
+- False-positive AI similarity.
+- User confirmation and rejection.
+- Multiple reports linked to one investigation.
+- Preservation of original complaint history.
+
