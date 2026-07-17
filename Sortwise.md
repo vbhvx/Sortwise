@@ -1398,3 +1398,31 @@ Test:
 - Multiple reports linked to one investigation.
 - Preservation of original complaint history.
 
+### Investigation tests
+
+Test:
+
+- Investigation creation.
+- Evidence attachment.
+- Finding revisions.
+- Root-cause hypotheses.
+- Human approval.
+- Incomplete investigations.
+- Investigation closure.
+- Reopening and audit history.
+
+### CAPA tests
+
+Test:
+
+- CAPA creation from a complaint or investigation.
+- Multiple linked complaints.
+- Required approvals.
+- Action assignment.
+- Due-date and overdue behavior.
+- Implementation evidence.
+- Verification criteria.
+- Ineffective action outcomes.
+- Correct closure prerequisites.
+- Reopening and continued traceability.
+
