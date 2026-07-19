@@ -1459,3 +1459,81 @@ Verify the complete journey:
 
 Use a separate test for complaints that do not require an investigation, according to the configured workflow.
 
+### Release gate
+
+The MVP must demonstrate a fully traceable complaint workflow, reviewable AI assistance, enforced permissions, and a reliable audit trail.
+
+Every risk, investigation, and CAPA decision must be reproducible from recorded inputs and human approvals.
+
+---
+
+## 19. Repository structure
+
+Use a maintainable structure centered on the complaint lifecycle.
+
+```text
+complaint-intelligence/
+├── src/
+│   ├── app/
+│   │   ├── dashboard/
+│   │   ├── complaints/
+│   │   ├── investigations/
+│   │   ├── capas/
+│   │   ├── reports/
+│   │   ├── audit/
+│   │   ├── settings/
+│   │   └── api/
+│   ├── components/
+│   │   ├── complaints/
+│   │   ├── triage/
+│   │   ├── evidence/
+│   │   ├── investigations/
+│   │   ├── capas/
+│   │   ├── audit/
+│   │   └── ui/
+│   ├── modules/
+│   │   ├── intake/
+│   │   ├── extraction/
+│   │   ├── normalization/
+│   │   ├── triage/
+│   │   ├── deduplication/
+│   │   ├── investigations/
+│   │   ├── root-cause/
+│   │   ├── capa/
+│   │   ├── workflows/
+│   │   ├── approvals/
+│   │   ├── reporting/
+│   │   └── ai/
+│   ├── lib/
+│   │   ├── auth/
+│   │   ├── db/
+│   │   ├── storage/
+│   │   ├── validation/
+│   │   └── observability/
+├── prisma/
+│   ├── schema.prisma
+│   ├── migrations/
+│   └── seed.ts
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   └── e2e/
+├── docs/
+│   ├── architecture.md
+│   ├── complaint-lifecycle.md
+│   ├── risk-assessment.md
+│   ├── audit-and-retention.md
+│   ├── regulatory-applicability.md
+│   └── deployment.md
+├── .env.example
+├── .gitignore
+├── Dockerfile
+├── docker-compose.yml
+├── README.md
+└── package.json
+```
+
+Adapt this structure to the actual repository. Avoid empty modules, redundant abstractions, or unnecessary microservices.
+
+---
+
