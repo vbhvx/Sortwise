@@ -1426,3 +1426,36 @@ Test:
 - Correct closure prerequisites.
 - Reopening and continued traceability.
 
+### Audit tests
+
+Test that:
+
+- Every material transition creates an audit event.
+- Actor identity and timestamps are recorded.
+- Previous and new values are captured where appropriate.
+- Ordinary application routes cannot mutate historical audit events.
+- Failed state transitions do not create misleading approval records.
+- Cross-tenant access is denied.
+
+### AI tests
+
+Test:
+
+- Accurate field extraction on controlled fixtures.
+- Unsupported values are not fabricated.
+- Invalid structured output is rejected.
+- Source references point to real records.
+- Duplicate suggestions are reviewable.
+- Risk-related suggestions include supporting evidence.
+- Prompt injection inside a complaint cannot override system controls.
+- AI failure leaves the human workflow usable.
+- Model output is never treated as an approved investigation conclusion.
+
+### End-to-end tests
+
+Verify the complete journey:
+
+`Create complaint → Review extracted fields → Assess risk → Inspect duplicate candidates → Investigate → Record findings → Create CAPA → Verify action → Approve closure`.
+
+Use a separate test for complaints that do not require an investigation, according to the configured workflow.
+
