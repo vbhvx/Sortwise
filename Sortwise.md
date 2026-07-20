@@ -1537,3 +1537,18 @@ Adapt this structure to the actual repository. Avoid empty modules, redundant ab
 
 ---
 
+## 20. Implementation checklist
+
+### Phase 1 — Repository inspection and workflow definition
+
+- Inspect the existing repository and dependencies.
+- Identify the target industry and initial complaint workflow.
+- Define the canonical complaint model.
+- Define complaint states and allowed transitions.
+- Define risk categories and human-review requirements.
+- Establish the regulatory applicability register.
+- Define audit events and retention requirements.
+- Write acceptance tests before expanding the AI features.
+
+**Deliverable:** a validated architecture and documented complaint lifecycle.
+
