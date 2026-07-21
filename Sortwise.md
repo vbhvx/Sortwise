@@ -1552,3 +1552,28 @@ Adapt this structure to the actual repository. Avoid empty modules, redundant ab
 
 **Deliverable:** a validated architecture and documented complaint lifecycle.
 
+### Phase 2 — Core complaint ledger
+
+- Implement authentication and organization isolation.
+- Create complaint tables and migrations.
+- Implement manual complaint creation.
+- Preserve original complaint text.
+- Implement complaint detail and history.
+- Add assignment and basic status transitions.
+- Implement audit events.
+- Add deterministic test fixtures.
+
+**Deliverable:** a usable complaint-management system without requiring AI.
+
+### Phase 3 — Intake and normalization
+
+- Implement supported document and CSV ingestion.
+- Add parsing and field validation.
+- Implement extraction and normalization.
+- Preserve source references.
+- Add review and correction controls.
+- Handle invalid records and partial failures.
+- Add retry-safe intake processing.
+
+**Deliverable:** complaints from different supported sources become consistent, traceable records.
+
