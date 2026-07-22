@@ -1577,3 +1577,27 @@ Adapt this structure to the actual repository. Avoid empty modules, redundant ab
 
 **Deliverable:** complaints from different supported sources become consistent, traceable records.
 
+### Phase 4 — Risk and duplicate assistance
+
+- Implement configurable deterministic triage rules.
+- Add versioned risk-assessment records.
+- Implement duplicate candidate generation.
+- Add related-case views.
+- Add human review and override paths.
+- Test high-risk and false-positive cases.
+- Add escalation behavior.
+
+**Deliverable:** reviewers can triage complaints and investigate possible duplicates without losing control of decisions.
+
+### Phase 5 — Investigation and root-cause analysis
+
+- Implement investigation records and tasks.
+- Add evidence management.
+- Add finding and hypothesis workflows.
+- Implement optional AI-assisted summaries and investigation questions.
+- Record root-cause conclusions with provenance.
+- Add approval and closure prerequisites.
+- Test the complete investigation lifecycle.
+
+**Deliverable:** a complaint can move into a traceable, evidence-backed investigation.
+
