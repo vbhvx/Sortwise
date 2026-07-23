@@ -1601,3 +1601,28 @@ Adapt this structure to the actual repository. Avoid empty modules, redundant ab
 
 **Deliverable:** a complaint can move into a traceable, evidence-backed investigation.
 
+### Phase 6 — CAPA and audit
+
+- Implement CAPA records.
+- Link CAPAs to investigations and complaints.
+- Add ownership and due dates.
+- Implement review and approval flows.
+- Add action implementation evidence.
+- Add verification and effectiveness checks.
+- Test overdue behavior and reopening.
+- Verify audit-history integrity.
+
+**Deliverable:** corrective and preventive actions remain traceable through implementation, verification, and closure.
+
+### Phase 7 — AI hardening and reporting
+
+- Add evidence-grounded summaries and classification assistance.
+- Implement structured AI response validation.
+- Add prompt-injection defenses.
+- Add AI-provider failure handling.
+- Implement complaint and CAPA reports.
+- Add export permissions.
+- Add evaluation tests for unsupported claims and missing evidence.
+
+**Deliverable:** AI-assisted quality workflows and useful reports with explicit evidence and uncertainty.
+
