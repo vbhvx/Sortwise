@@ -1626,3 +1626,21 @@ Adapt this structure to the actual repository. Avoid empty modules, redundant ab
 
 **Deliverable:** AI-assisted quality workflows and useful reports with explicit evidence and uncertainty.
 
+### Phase 8 — Security, deployment, and handover
+
+- Run full tests and security checks.
+- Verify tenant isolation and role permissions.
+- Test document storage and retention behavior.
+- Review regulatory configuration.
+- Complete database migrations and backups.
+- Configure production credentials.
+- Deploy where access is available.
+- Verify complaint-to-CAPA traceability in the deployed application.
+- Complete the README and operating documentation.
+
+**Deliverable:** a maintainable, auditable application with a truthful implementation report.
+
+---
+
+## 21. Acceptance criteria and release gates
+
