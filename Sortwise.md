@@ -1644,3 +1644,35 @@ Adapt this structure to the actual repository. Avoid empty modules, redundant ab
 
 ## 21. Acceptance criteria and release gates
 
+### Data integrity
+
+- Original complaint content remains available.
+- Extracted fields retain provenance.
+- Unsupported values are not invented.
+- Source documents and complaint records remain correctly linked.
+- Duplicate suggestions do not automatically delete cases.
+- Risk assessments retain their rules and evidence.
+- Investigation conclusions remain distinguishable from hypotheses.
+- CAPAs remain linked to the originating complaints and findings.
+
+### Workflow integrity
+
+- State changes are validated on the server.
+- Unauthorized users cannot approve or close restricted cases.
+- Required escalation conditions are enforced.
+- Important workflow decisions have an audit trail.
+- Reopened complaints preserve previous closure history.
+- CAPA implementation is distinguished from effectiveness verification.
+- Notifications cannot silently change a complaint's status.
+- Failed AI processing leaves the core workflow usable.
+
+### AI integrity
+
+- The assistant uses authorized records.
+- Suggestions include supporting evidence where possible.
+- Unsupported conclusions are not presented as facts.
+- Duplicate matches remain reviewable.
+- Human decisions override advisory suggestions where the workflow permits.
+- AI failure is visible and does not erase complaint data.
+- Prompt injection cannot bypass permissions or approval rules.
+
