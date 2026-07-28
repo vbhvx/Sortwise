@@ -1676,3 +1676,25 @@ Adapt this structure to the actual repository. Avoid empty modules, redundant ab
 - AI failure is visible and does not erase complaint data.
 - Prompt injection cannot bypass permissions or approval rules.
 
+### Security and privacy
+
+- Organization and user access are enforced.
+- Attachments are private by default.
+- Audit history is protected.
+- Sensitive data is not unnecessarily exposed in logs or AI prompts.
+- Export and deletion follow the documented policy.
+- Credentials remain outside source control.
+- Regulated actions cannot be activated merely by changing frontend state.
+
+### Engineering delivery
+
+- Database migrations are reproducible.
+- Automated tests have actually been run.
+- Critical complaint and CAPA workflows pass end-to-end tests.
+- The source and configuration are documented.
+- Deployment claims are verified.
+- Applicable regulatory requirements and remaining compliance gaps are documented.
+- The final report distinguishes implemented functionality from compliance validation that remains outstanding.
+
+---
+
