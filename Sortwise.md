@@ -1698,3 +1698,37 @@ Adapt this structure to the actual repository. Avoid empty modules, redundant ab
 
 ---
 
+## 22. README and delivery requirements
+
+The README must include:
+
+- Product purpose and intended industries.
+- Screenshots of the working application.
+- Architecture and repository structure.
+- Technology stack.
+- Complaint lifecycle and state-transition rules.
+- Supported intake formats.
+- Data model and evidence provenance.
+- Risk assessment configuration.
+- Duplicate-detection methodology.
+- Investigation and root-cause workflow.
+- CAPA lifecycle and verification behavior.
+- AI task boundaries and limitations.
+- User roles and permissions.
+- Audit and retention policy.
+- Applicable regulatory assumptions and review status.
+- Database migration and seed instructions.
+- Environment variables and integration setup.
+- Local development and Docker instructions.
+- Test commands.
+- Deployment and recovery procedures.
+- Known limitations and unimplemented capabilities.
+
+Never commit real complaint data, customer-identifying information, API credentials, or confidential source documents.
+
+Do not claim regulatory certification or compliance based solely on the existence of the software.
+
+---
+
+## 23. Risks that could invalidate the result
+
