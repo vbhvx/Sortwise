@@ -1732,3 +1732,15 @@ Do not claim regulatory certification or compliance based solely on the existenc
 
 ## 23. Risks that could invalidate the result
 
+### Incorrect complaint extraction
+
+A wrongly extracted product, date, batch, or event description can corrupt the downstream investigation.
+
+**Mitigation:** Preserve the original source, retain extraction provenance, validate fields, and require review for material uncertainties.
+
+### False-positive duplicate detection
+
+Two complaints describing a similar symptom may refer to different products, events, or causes.
+
+**Mitigation:** Use evidence-backed matching criteria, preserve all original cases, and require review before confirming a duplicate relationship.
+
