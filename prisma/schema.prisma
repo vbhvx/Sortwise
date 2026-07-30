@@ -1,0 +1,575 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMINISTRATOR
+  COMPLAINT_REVIEWER
+  INVESTIGATOR
+  QUALITY_APPROVER
+  READONLY_AUDITOR
+}
+
+enum SourceType {
+  MANUAL
+  EMAIL
+  CSV_IMPORT
+  DOCUMENT_UPLOAD
+  API_INTEGRATION
+}
+
+enum ComplaintStatus {
+  RECEIVED
+  AWAITING_EXTRACTION
+  EXTRACTION_COMPLETE
+  TRIAGE_REVIEW
+  UNDER_ASSESSMENT
+  INVESTIGATION_REQUIRED
+  UNDER_INVESTIGATION
+  CAPA_IN_PROGRESS
+  AWAITING_VERIFICATION
+  AWAITING_APPROVAL
+  CLOSED
+  REOPENED
+  CANCELLED
+}
+
+enum Priority {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum ExtractionReviewStatus {
+  PENDING
+  ACCEPTED
+  CORRECTED
+  REJECTED
+}
+
+enum RelationshipType {
+  CONFIRMED_DUPLICATE
+  POSSIBLE_DUPLICATE
+  RELATED_COMPLAINT
+  SIMILAR_PROBLEM_DISTINCT_CASE
+  UNRELATED
+}
+
+enum RelationshipReviewStatus {
+  PROPOSED_BY_SYSTEM
+  CONFIRMED_BY_REVIEWER
+  REJECTED_BY_REVIEWER
+  DEFERRED
+}
+
+enum InvestigationStatus {
+  PLANNED
+  IN_PROGRESS
+  PENDING_APPROVAL
+  COMPLETED
+  REOPENED
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum HypothesisStatus {
+  PROPOSED_HYPOTHESIS
+  UNDER_TESTING
+  VERIFIED_FINDING
+  DISPROVEN_REJECTED
+}
+
+enum CapaStatus {
+  PROPOSED
+  UNDER_REVIEW
+  APPROVED
+  IN_PROGRESS
+  IMPLEMENTED
+  EFFECTIVENESS_REVIEW
+  VERIFIED_EFFECTIVE
+  INEFFECTIVE_REOPENED
+  CLOSED
+  CANCELLED
+}
+
+enum ApprovalDecision {
+  APPROVED
+  REJECTED
+  CHANGES_REQUESTED
+}
+
+model Organization {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  industry    String   @default("Medical Devices & Quality Operations")
+  settings    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  memberships              OrganizationMembership[]
+  complaints               Complaint[]
+  investigations           Investigation[]
+  capas                    Capa[]
+  auditEvents              AuditEvent[]
+  approvalRecords          ApprovalRecord[]
+  regulatoryApplicabilities RegulatoryApplicability[]
+  aiAnalysisRuns           AiAnalysisRun[]
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  fullName     String
+  title        String?
+  department   String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  memberships             OrganizationMembership[]
+  assignedComplaints      Complaint[]              @relation("AssignedComplaints")
+  closedComplaints        Complaint[]              @relation("ClosedComplaints")
+  reopenedComplaints      Complaint[]              @relation("ReopenedComplaints")
+  leadInvestigations      Investigation[]          @relation("LeadInvestigator")
+  approvedInvestigations  Investigation[]          @relation("ApprovedInvestigations")
+  investigationTasks      InvestigationTask[]      @relation("AssignedTasks")
+  leadCapas               Capa[]                   @relation("LeadCapas")
+  approvedCapas           Capa[]                   @relation("ApprovedCapas")
+  closedCapas             Capa[]                   @relation("ClosedCapas")
+  approvals               ApprovalRecord[]
+  auditEvents             AuditEvent[]             @relation("ActorAuditEvents")
+}
+
+model OrganizationMembership {
+  id             String       @id @default(uuid())
+  organizationId String
+  userId         String
+  role           Role         @default(COMPLAINT_REVIEWER)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId])
+  @@index([organizationId])
+  @@index([userId])
+}
+
+model Complaint {
+  id                    String          @id @default(uuid())
+  complaintNumber       String          @unique
+  organizationId        String
+  sourceType            SourceType      @default(MANUAL)
+  externalReference     String?
+  receivedAt            DateTime        @default(now())
+  occurredAt            DateTime?
+  complainantName       String?
+  complainantContact    String?
+  complainantType       String?
+  productName           String
+  productCode           String?
+  lotNumber             String?
+  serialNumber          String?
+  expirationDate        DateTime?
+  originalDescription   String          // NEVER overwritten, immutable source text
+  normalizedDescription String?
+  category              String          @default("Product Defect")
+  reportedImpact        String?
+  status                ComplaintStatus @default(RECEIVED)
+  priority              Priority        @default(MEDIUM)
+  assignedToId          String?
+  dueDate               DateTime?
+  isOverdue             Boolean         @default(false)
+  isSafetyCritical      Boolean         @default(false)
+  isReportable          Boolean         @default(false)
+  closureRationale      String?
+  closedAt              DateTime?
+  closedById            String?
+  reopenedAt            DateTime?
+  reopenedById          String?
+  reopenRationale       String?
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  organization          Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  assignedTo            User?           @relation("AssignedComplaints", fields: [assignedToId], references: [id], onDelete: SetNull)
+  closedBy              User?           @relation("ClosedComplaints", fields: [closedById], references: [id], onDelete: SetNull)
+  reopenedBy            User?           @relation("ReopenedComplaints", fields: [reopenedById], references: [id], onDelete: SetNull)
+
+  source                ComplaintSource?
+  attachments           ComplaintAttachment[]
+  extractions           ComplaintExtraction[]
+  riskAssessments       RiskAssessment[]
+  outgoingRelations     ComplaintRelationship[] @relation("SourceRelationships")
+  incomingRelations     ComplaintRelationship[] @relation("TargetRelationships")
+  investigations        Investigation[]
+  capaLinks             CapaComplaintLink[]
+
+  @@index([organizationId])
+  @@index([status])
+  @@index([priority])
+  @@index([category])
+  @@index([productName])
+  @@index([lotNumber])
+  @@index([receivedAt])
+}
+
+model ComplaintSource {
+  id           String    @id @default(uuid())
+  complaintId  String    @unique
+  sourceSystem String    @default("web_intake")
+  externalId   String?
+  rawPayload   String?
+  contentHash  String
+  ingestedAt   DateTime  @default(now())
+  createdAt    DateTime  @default(now())
+
+  complaint    Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+
+  @@index([contentHash])
+}
+
+model ComplaintAttachment {
+  id           String    @id @default(uuid())
+  complaintId  String
+  fileName     String
+  fileSize     Int
+  mimeType     String
+  storageKey   String
+  fileHash     String
+  uploadedById String?
+  isEvidence   Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+
+  complaint    Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+
+  @@index([complaintId])
+}
+
+model ComplaintExtraction {
+  id               String                 @id @default(uuid())
+  complaintId      String
+  schemaVersion    String                 @default("v1.0")
+  extractionMethod String                 @default("AI_ASSISTED")
+  extractedFields  Json
+  confidence       Float?
+  missingFields    Json?
+  reviewStatus     ExtractionReviewStatus @default(PENDING)
+  reviewedById     String?
+  reviewedAt       DateTime?
+  corrections      Json?
+  createdAt        DateTime               @default(now())
+
+  complaint        Complaint              @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+
+  @@index([complaintId])
+  @@index([reviewStatus])
+}
+
+model RiskAssessment {
+  id                 String    @id @default(uuid())
+  complaintId        String
+  assessmentVersion  Int       @default(1)
+  appliedRules       Json
+  factorsConsidered  Json
+  suggestedPriority  Priority  @default(MEDIUM)
+  suggestedCategory  String?
+  confidence         Float?
+  rationale          String
+  missingInformation Json?
+  aiModelMetadata    Json?
+  isHumanOverridden  Boolean   @default(false)
+  finalPriority      Priority  @default(MEDIUM)
+  overrideRationale  String?
+  reviewedById       String?
+  reviewedAt         DateTime?
+  createdAt          DateTime  @default(now())
+
+  complaint          Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+
+  @@index([complaintId])
+}
+
+model ComplaintRelationship {
+  id                String                   @id @default(uuid())
+  sourceComplaintId String
+  targetComplaintId String
+  relationshipType  RelationshipType         @default(POSSIBLE_DUPLICATE)
+  matchingCriteria  Json
+  similarityScore   Float                    @default(0.0)
+  rationale         String
+  reviewStatus      RelationshipReviewStatus @default(PROPOSED_BY_SYSTEM)
+  reviewedById      String?
+  reviewedAt        DateTime?
+  notes             String?
+  createdAt         DateTime                 @default(now())
+
+  sourceComplaint   Complaint                @relation("SourceRelationships", fields: [sourceComplaintId], references: [id], onDelete: Cascade)
+  targetComplaint   Complaint                @relation("TargetRelationships", fields: [targetComplaintId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceComplaintId, targetComplaintId])
+  @@index([sourceComplaintId])
+  @@index([targetComplaintId])
+}
+
+model Investigation {
+  id                     String              @id @default(uuid())
+  investigationNumber    String              @unique
+  organizationId         String
+  complaintId            String
+  leadInvestigatorId     String
+  status                 InvestigationStatus @default(PLANNED)
+  scope                  String
+  issueStatement         String
+  investigationPlan      String
+  targetCompletionDate   DateTime?
+  summaryOfFindings      String?
+  rootCauseMethod        String?
+  rootCauseConclusion    String?
+  isRootCauseIdentified  Boolean             @default(false)
+  capaRequired           Boolean             @default(false)
+  capaJustification      String?
+  completedAt            DateTime?
+  approvedById           String?
+  approvedAt             DateTime?
+  createdAt              DateTime            @default(now())
+  updatedAt              DateTime            @updatedAt
+
+  organization           Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  complaint              Complaint           @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  leadInvestigator       User                @relation("LeadInvestigator", fields: [leadInvestigatorId], references: [id])
+  approvedBy             User?               @relation("ApprovedInvestigations", fields: [approvedById], references: [id], onDelete: SetNull)
+
+  tasks                  InvestigationTask[]
+  evidence               InvestigationEvidence[]
+  hypotheses             RootCauseHypothesis[]
+  capaLinks              CapaComplaintLink[]
+
+  @@index([organizationId])
+  @@index([complaintId])
+  @@index([status])
+}
+
+model InvestigationTask {
+  id              String        @id @default(uuid())
+  investigationId String
+  title           String
+  description     String?
+  assignedToId    String
+  dueDate         DateTime?
+  status          TaskStatus    @default(PENDING)
+  findingsNotes   String?
+  completedAt     DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  investigation   Investigation @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  assignedTo      User          @relation("AssignedTasks", fields: [assignedToId], references: [id])
+
+  @@index([investigationId])
+  @@index([assignedToId])
+}
+
+model InvestigationEvidence {
+  id               String        @id @default(uuid())
+  investigationId  String
+  title            String
+  evidenceType     String        @default("LAB_TEST")
+  fileAttachmentId String?
+  description      String
+  fileHash         String?
+  uploadedById     String?
+  createdAt        DateTime      @default(now())
+
+  investigation    Investigation @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+
+  @@index([investigationId])
+}
+
+model RootCauseHypothesis {
+  id                 String           @id @default(uuid())
+  investigationId    String
+  method             String           @default("FIVE_WHYS") // FIVE_WHYS, FISHBONE_6M, HYPOTHESIS_TESTING
+  category           String?          // MANPOWER, MACHINE, METHOD, MATERIAL, MEASUREMENT, ENVIRONMENT
+  statement          String
+  stepLevel          Int?             // 1-5 for 5 Whys
+  status             HypothesisStatus @default(PROPOSED_HYPOTHESIS)
+  supportingEvidence String?
+  isAiSuggested      Boolean          @default(false)
+  verifiedById       String?
+  verifiedAt         DateTime?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+
+  investigation      Investigation    @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+
+  @@index([investigationId])
+  @@index([status])
+}
+
+model Capa {
+  id                            String              @id @default(uuid())
+  capaNumber                    String              @unique
+  organizationId                String
+  title                         String
+  problemStatement              String
+  identifiedRootCause           String
+  correctiveActionPlan          String
+  preventiveActionPlan          String?
+  leadOwnerId                   String
+  targetCompletionDate          DateTime?
+  status                        CapaStatus          @default(PROPOSED)
+  priority                      Priority            @default(HIGH)
+  implementationEvidenceSummary String?
+  effectivenessCriteria         String
+  effectivenessReviewDate       DateTime?
+  effectivenessResults          String?
+  isEffective                   Boolean?
+  approvedById                  String?
+  approvedAt                    DateTime?
+  closedById                    String?
+  closedAt                      DateTime?
+  createdAt                     DateTime            @default(now())
+  updatedAt                     DateTime            @updatedAt
+
+  organization                  Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  leadOwner                     User                @relation("LeadCapas", fields: [leadOwnerId], references: [id])
+  approvedBy                    User?               @relation("ApprovedCapas", fields: [approvedById], references: [id], onDelete: SetNull)
+  closedBy                      User?               @relation("ClosedCapas", fields: [closedById], references: [id], onDelete: SetNull)
+
+  complaintLinks                CapaComplaintLink[]
+  evidence                      CapaEvidence[]
+
+  @@index([organizationId])
+  @@index([status])
+}
+
+model CapaComplaintLink {
+  id              String         @id @default(uuid())
+  capaId          String
+  complaintId     String
+  investigationId String?
+  linkedById      String?
+  linkedAt        DateTime       @default(now())
+
+  capa            Capa           @relation(fields: [capaId], references: [id], onDelete: Cascade)
+  complaint       Complaint      @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  investigation   Investigation? @relation(fields: [investigationId], references: [id], onDelete: SetNull)
+
+  @@unique([capaId, complaintId])
+  @@index([capaId])
+  @@index([complaintId])
+}
+
+model CapaEvidence {
+  id            String   @id @default(uuid())
+  capaId        String
+  phase         String   @default("IMPLEMENTATION") // IMPLEMENTATION or VERIFICATION
+  title         String
+  description   String
+  storageKey    String?
+  fileHash      String?
+  submittedById String?
+  submittedAt   DateTime @default(now())
+
+  capa          Capa     @relation(fields: [capaId], references: [id], onDelete: Cascade)
+
+  @@index([capaId])
+}
+
+model ApprovalRecord {
+  id               String           @id @default(uuid())
+  organizationId   String
+  entityType       String           // COMPLAINT_CLOSURE, INVESTIGATION_APPROVAL, CAPA_PLAN_APPROVAL, CAPA_EFFECTIVENESS_CLOSURE
+  entityId         String
+  approverId       String
+  signatureMeaning String
+  decision         ApprovalDecision @default(APPROVED)
+  rationale        String
+  signedAt         DateTime         @default(now())
+
+  organization     Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  approver         User             @relation(fields: [approverId], references: [id])
+
+  @@index([organizationId])
+  @@index([entityType, entityId])
+}
+
+model AuditEvent {
+  id             String       @id @default(uuid())
+  organizationId String
+  actorId        String?
+  actorEmail     String
+  action         String
+  entityType     String
+  entityId       String
+  previousState  Json?
+  newState       Json?
+  reason         String?
+  ipAddress      String?
+  userAgent      String?
+  createdAt      DateTime     @default(now())
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  actor          User?        @relation("ActorAuditEvents", fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([entityType, entityId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+model AiAnalysisRun {
+  id                String       @id @default(uuid())
+  organizationId    String
+  complaintId       String?
+  task              String       // EXTRACTION, TRIAGE_RISK, DUPLICATE_DETECTION, ROOT_CAUSE_ASSISTANCE, CAPA_SUGGESTION
+  provider          String       @default("mock")
+  model             String       @default("mock-deterministic-v1")
+  promptTokens      Int?
+  completionTokens  Int?
+  latencyMs         Int?
+  groundedCitations Json?
+  status            String       @default("SUCCESS")
+  rawOutput         String?
+  parsedOutput      Json?
+  createdAt         DateTime     @default(now())
+
+  organization      Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([complaintId])
+}
+
+model RegulatoryApplicability {
+  id                 String       @id @default(uuid())
+  organizationId     String
+  standardName       String
+  industryScope      String
+  officialReference  String
+  reviewDate         DateTime     @default(now())
+  status             String       @default("ACTIVE")
+  applicableClauses  Json
+  complianceOwner    String
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  organization       Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+}
+
