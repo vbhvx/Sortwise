@@ -1744,3 +1744,15 @@ Two complaints describing a similar symptom may refer to different products, eve
 
 **Mitigation:** Use evidence-backed matching criteria, preserve all original cases, and require review before confirming a duplicate relationship.
 
+### Underestimated risk
+
+An absence of explicit risk language does not prove that a complaint is low risk.
+
+**Mitigation:** Treat missing information as uncertainty, implement approved escalation rules, and prevent AI suggestions from silently downgrading required review.
+
+### Unsupported root-cause conclusions
+
+A language model may suggest a plausible cause without sufficient evidence.
+
+**Mitigation:** Preserve hypotheses and findings as separate states, attach supporting evidence, and require authorized review.
+
