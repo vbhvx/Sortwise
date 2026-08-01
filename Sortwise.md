@@ -1756,3 +1756,15 @@ A language model may suggest a plausible cause without sufficient evidence.
 
 **Mitigation:** Preserve hypotheses and findings as separate states, attach supporting evidence, and require authorized review.
 
+### Disconnected CAPA records
+
+Actions may appear completed without demonstrating that they address the investigated cause or that their effectiveness was verified.
+
+**Mitigation:** Maintain explicit complaint-investigation-CAPA relationships, documented action ownership, verification criteria, and approval requirements.
+
+### Weak auditability
+
+Ordinary editable logs or incomplete history may not support meaningful reconstruction of a regulated workflow.
+
+**Mitigation:** Use durable audit events, versioned rules, appropriate integrity controls, clear actor attribution, and tested access restrictions.
+
