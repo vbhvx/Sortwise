@@ -1768,3 +1768,15 @@ Ordinary editable logs or incomplete history may not support meaningful reconstr
 
 **Mitigation:** Use durable audit events, versioned rules, appropriate integrity controls, clear actor attribution, and tested access restrictions.
 
+### Overstated compliance
+
+A software platform alone cannot establish that an organization meets all applicable regulatory and quality-system requirements.
+
+**Mitigation:** Maintain an applicability register, implement the relevant requirements, validate the configured workflows, and avoid unsupported compliance claims.
+
+### AI or provider failure
+
+External services can fail, time out, or return invalid output.
+
+**Mitigation:** Isolate providers, preserve source records, support manual review, and ensure failure does not erase work or silently change decisions.
+
