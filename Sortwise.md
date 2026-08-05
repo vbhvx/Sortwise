@@ -1780,3 +1780,66 @@ External services can fail, time out, or return invalid output.
 
 **Mitigation:** Isolate providers, preserve source records, support manual review, and ensure failure does not erase work or silently change decisions.
 
+### Excessive scope
+
+Building ingestion, every regulatory variant, multiple AI features, and every CAPA workflow simultaneously can prevent delivery of a reliable first release.
+
+**Mitigation:** Start with a complete complaint lifecycle for one clearly defined operating context, then expand through independently tested configurations.
+
+---
+
+## 24. Required final report
+
+At the end of implementation, provide:
+
+1. Summary of the implemented complaint platform.
+2. Final architecture and repository structure.
+3. Supported complaint intake methods.
+4. Canonical data model and source-preservation behavior.
+5. Triage and risk-assessment methodology.
+6. Duplicate-detection approach and its limitations.
+7. Investigation and root-cause workflow.
+8. CAPA creation, verification, and closure behavior.
+9. AI capabilities, evidence grounding, and limitations.
+10. Audit trail and access-control implementation.
+11. Regulatory applicability assumptions and unverified requirements.
+12. Tests actually executed and results.
+13. Type-check, lint, build, and end-to-end test results.
+14. Local setup and environment instructions.
+15. Verified deployment URL, if available.
+16. Known defects and unresolved external dependencies.
+17. A prioritized list of future improvements.
+
+Do not claim that a complaint was correctly assessed, a root cause was established, an action was effective, or a regulated workflow was validated solely because the corresponding code exists.
+
+Distinguish between a working product feature, a tested software control, and formal validation or compliance that requires further evidence.
+
+---
+
+## 25. Final execution instruction
+
+Start by inspecting the existing repository and identifying the target complaint workflow and operating context.
+
+Do not begin with an AI dashboard. Build the complete complaint lifecycle first:
+
+**Receive complaint → Preserve evidence → Validate and normalize → Triage → Review related cases → Investigate → Record findings → Create CAPA when required → Verify actions → Approve closure.**
+
+Then add AI-powered extraction, triage support, duplicate detection, root-cause hypotheses, and structured summaries as advisory capabilities backed by source records.
+
+Use deterministic rules wherever behavior must be reproducible. Keep risk thresholds and workflow requirements configurable. Preserve original complaints, audit material decisions, and enforce authorization on the backend.
+
+When regulatory requirements or provider capabilities are not yet verified, record the dependency explicitly rather than presenting the feature as compliant or operational.
+
+**The fundamental architecture is:**
+
+- The intake layer preserves what was originally reported.
+- The normalization layer creates consistent, traceable complaint records.
+- The triage layer identifies cases requiring review.
+- The duplicate-detection layer surfaces possible relationships without deleting evidence.
+- The investigation layer records facts, hypotheses, findings, and conclusions.
+- The CAPA layer tracks actions, ownership, implementation, and effectiveness.
+- The AI layer assists reviewers but does not become the authority for safety or compliance decisions.
+- The workflow and audit layers preserve responsibility, approvals, and decision history.
+- The security layer protects sensitive complaint records and enforces organizational permissions.
+
+Build a reliable complaint management platform that helps organizations review complaints faster, identify potential risks earlier, investigate issues systematically, and maintain an auditable path from the original report to verified corrective action—without fabricating evidence or substituting AI-generated confidence for accountable human judgment.
