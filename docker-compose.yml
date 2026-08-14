@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: sortwise-db
+    environment:
+      POSTGRES_USER: sortwise_user
+      POSTGRES_PASSWORD: sortwise_password
+      POSTGRES_DB: sortwise_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sortwise_user -d sortwise_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sortwise-app
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://sortwise_user:sortwise_password@db:5432/sortwise_dev?schema=public"
+      JWT_SECRET: "sortwise-docker-production-secret-2026"
+      NODE_ENV: "production"
+      AI_PROVIDER: "mock"
+
+volumes:
+  pgdata:
+
