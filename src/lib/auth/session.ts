@@ -4,7 +4,19 @@ import { NextRequest } from 'next/server';
 import { Role } from '@prisma/client';
 import { prisma } from '@/lib/db/prisma';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'sortwise-fallback-secret-2026';
+const DEV_FALLBACK_SECRET = 'sortwise-fallback-secret-2026';
+
+// The fallback only applies outside production (local dev and tests).
+function getSigningSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('JWT_SECRET must be set in production');
+    }
+    return DEV_FALLBACK_SECRET;
+  }
+  return secret;
+}
 const COOKIE_NAME = 'sortwise_auth_token';
 
 export interface AuthSession {
@@ -17,12 +29,12 @@ export interface AuthSession {
 }
 
 export function signToken(payload: AuthSession): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' });
+  return jwt.sign(payload, getSigningSecret(), { expiresIn: '7d' });
 }
 
 export function verifyToken(token: string): AuthSession | null {
   try {
-    return jwt.verify(token, JWT_SECRET) as AuthSession;
+    return jwt.verify(token, getSigningSecret()) as AuthSession;
   } catch {
     return null;
   }
