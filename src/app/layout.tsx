@@ -9,6 +9,14 @@ export const metadata: Metadata = {
   title: 'Sortwise | AI-Assisted Complaint Management & Quality Intelligence',
   description:
     'Full-stack quality operations platform with evidence preservation, risk-based triage, duplicate detection, root-cause analysis, and auditable CAPA workflows.',
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
